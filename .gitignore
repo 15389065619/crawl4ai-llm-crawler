@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 运行产物
+quotes_c4a.json
+*.csv
+*.log
+
+# 环境与编辑器
+.env
+.idea/
+.vscode/
+.DS_Store
