@@ -30,6 +30,42 @@ set OPENAI_API_KEY=sk-xxx        # Windows
 export OPENAI_API_KEY=sk-xxx     # macOS / Linux
 ```
 
+## 运行效果
+
+`stage1_basic.py` —— JS 渲染页面直接输出 Markdown：
+
+```text
+抓取成功: True
+渲染后 HTML 长度: 8940
+Markdown 长度: 1666
+
+#  [Quotes to Scrape](https://quotes.toscrape.com/)
+“The world as we have created it is a process of our thinking. ...”by Albert Einstein
+Tags: change deep-thoughts thinking world
+```
+
+`stage2_config.py` —— 同一标签页内多次滚动，数据递增：
+
+```text
+【演示B】无限滚动页面
+  初始加载: 10 条名言
+  滚动第 1 次后: 20 条名言
+  滚动第 2 次后: 30 条名言
+```
+
+（每次滚动耗时约 0.46s —— `wait_for` 条件一满足立即返回，不做固定 sleep）
+
+`stage3_extract.py` —— 结构化结果：
+
+```json
+{
+  "text": "The world as we have created it is a process of our thinking. ...",
+  "author": "Albert Einstein",
+  "author_link": "/author/Albert-Einstein",
+  "tags": ["change", "deep-thoughts", "thinking", "world"]
+}
+```
+
 ## 各阶段要点
 
 ### 阶段 1：三行代码抓 JS 页面
